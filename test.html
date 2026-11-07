@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QR Code 扩展测试页面</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background: #f1f5f9;
+      color: #1e293b;
+      padding: 40px 20px;
+    }
+    .container {
+      max-width: 860px;
+      margin: 0 auto;
+    }
+    header {
+      margin-bottom: 30px;
+      text-align: center;
+    }
+    h1 {
+      font-size: 26px;
+      color: #0f172a;
+      margin-bottom: 8px;
+    }
+    p.desc {
+      color: #64748b;
+      font-size: 15px;
+    }
+    .instructions {
+      background: #eff6ff;
+      border: 1px solid #bfdbfe;
+      border-radius: 12px;
+      padding: 16px 20px;
+      margin-bottom: 30px;
+      color: #1e40af;
+      font-size: 14.5px;
+      line-height: 1.6;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+    }
+    .card {
+      background: #ffffff;
+      border-radius: 14px;
+      padding: 20px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .card h3 {
+      font-size: 16px;
+      margin-bottom: 6px;
+      color: #0f172a;
+    }
+    .card p {
+      font-size: 13px;
+      color: #64748b;
+      margin-bottom: 16px;
+    }
+    .img-wrapper {
+      width: 220px;
+      height: 220px;
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .img-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      cursor: context-menu;
+    }
+    .tag {
+      margin-top: 12px;
+      font-size: 12px;
+      color: #2563eb;
+      background: #eff6ff;
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-weight: 500;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>QR Code 识别器 - 测试体验页面</h1>
+      <p class="desc">请在下方任意图片上点击【鼠标右键】，并在右键菜单中选择【识别二维码】进行测试</p>
+    </header>
+
+    <div class="instructions">
+      💡 <strong>测试指引：</strong> 安装本扩展后，直接右键点击下方的示例图片，选择「识别二维码」，即可在当前页面弹窗查看识别出的二维码内容，并可一键复制或快速跳转链接。
+    </div>
+
+    <div class="grid">
+      <!-- 案例 1: 网址二维码 -->
+      <div class="card">
+        <h3>测试图 1：网址链接</h3>
+        <p>包含网址 https://www.google.com</p>
+        <div class="img-wrapper">
+          <img src="test-images/qr-url.png" alt="QR Code URL">
+        </div>
+        <span class="tag">预期：识别为网址，提供跳转按钮</span>
+      </div>
+
+      <!-- 案例 2: 普通文本二维码 -->
+      <div class="card">
+        <h3>测试图 2：普通文本</h3>
+        <p>包含文本 "Hello Antigravity QR Code!"</p>
+        <div class="img-wrapper">
+          <img src="test-images/qr-text.png" alt="QR Code Text">
+        </div>
+        <span class="tag">预期：识别为文本，提供一键复制</span>
+      </div>
+
+      <!-- 案例 3: 无二维码的普通图片 -->
+      <div class="card">
+        <h3>测试图 3：非二维码图片</h3>
+        <p>普通圆形几何图片，无二维码</p>
+        <div class="img-wrapper">
+          <img src="test-images/normal-image.png" alt="Normal Image">
+        </div>
+        <span class="tag" style="color: #ea580c; background: #fff7ed;">预期：弹窗提示未识别到二维码</span>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

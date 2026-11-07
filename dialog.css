@@ -1,0 +1,254 @@
+/* QR Code Recognizer - Dialog Styles (Injected into Shadow DOM) */
+
+:host {
+  all: initial;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #1e293b;
+  box-sizing: border-box;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* 背景蒙层 */
+.qr-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 2147483647;
+  background-color: rgba(15, 23, 42, 0.45);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  opacity: 0;
+  animation: qr-fade-in 0.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.qr-overlay.closing {
+  animation: qr-fade-out 0.18s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* 弹窗主体卡片 */
+.qr-card {
+  width: 100%;
+  max-width: 480px;
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+  transform: scale(0.96) translateY(8px);
+  animation: qr-scale-in 0.22s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.qr-overlay.closing .qr-card {
+  animation: qr-scale-out 0.18s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* 头部导航 */
+.qr-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.qr-title-box {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.qr-icon-badge {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: #eff6ff;
+  color: #2563eb;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.qr-icon-badge.error {
+  background: #fef2f2;
+  color: #ef4444;
+}
+
+.qr-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #0f172a;
+}
+
+.qr-close-btn {
+  width: 30px;
+  height: 30px;
+  border-radius: 8px;
+  border: none;
+  background: transparent;
+  color: #94a3b8;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s ease;
+}
+
+.qr-close-btn:hover {
+  background: #f1f5f9;
+  color: #475569;
+}
+
+/* 内容区域 */
+.qr-body {
+  padding: 20px;
+}
+
+.qr-tag-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.qr-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 12px;
+  font-weight: 500;
+  padding: 2px 8px;
+  border-radius: 6px;
+  background: #eff6ff;
+  color: #2563eb;
+}
+
+.qr-text-box {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 14px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 13.5px;
+  line-height: 1.6;
+  color: #1e293b;
+  max-height: 220px;
+  overflow-y: auto;
+  white-space: pre-wrap;
+  word-break: break-all;
+  user-select: text;
+  -webkit-user-select: text;
+}
+
+/* 错误提示卡片 */
+.qr-error-msg {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 14px;
+  background: #fff7ed;
+  border: 1px solid #fed7aa;
+  border-radius: 10px;
+  color: #9a3412;
+  font-size: 13.5px;
+  line-height: 1.5;
+}
+
+.qr-error-tip {
+  margin-top: 10px;
+  font-size: 12px;
+  color: #64748b;
+  line-height: 1.4;
+}
+
+/* 底部操作按钮 */
+.qr-footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+  padding: 14px 20px;
+  background: #f8fafc;
+  border-top: 1px solid #f1f5f9;
+}
+
+.qr-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 8px 16px;
+  font-size: 13.5px;
+  font-weight: 500;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  border: 1px solid transparent;
+  text-decoration: none;
+}
+
+.qr-btn-secondary {
+  background: #ffffff;
+  border-color: #cbd5e1;
+  color: #475569;
+}
+
+.qr-btn-secondary:hover {
+  background: #f1f5f9;
+  color: #1e293b;
+}
+
+.qr-btn-primary {
+  background: #2563eb;
+  color: #ffffff;
+}
+
+.qr-btn-primary:hover {
+  background: #1d4ed8;
+}
+
+.qr-btn-primary.copied {
+  background: #059669;
+}
+
+/* 动画定义 */
+@keyframes qr-fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes qr-fade-out {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+@keyframes qr-scale-in {
+  from {
+    transform: scale(0.96) translateY(8px);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes qr-scale-out {
+  from {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+  }
+  to {
+    transform: scale(0.96) translateY(8px);
+    opacity: 0;
+  }
+}

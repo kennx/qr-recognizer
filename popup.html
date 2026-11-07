@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QR Code 识别器</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="popup-container">
+    <header class="header">
+      <div class="logo-box">
+        <img src="icons/icon48.png" alt="logo" class="logo-icon">
+        <div>
+          <h1 class="title">QR Code 识别器</h1>
+          <p class="subtitle">网页图片二维码快速识别</p>
+        </div>
+      </div>
+    </header>
+
+    <main class="content">
+      <div class="guide-card">
+        <h2 class="guide-title">使用方法</h2>
+        <ol class="step-list">
+          <li class="step-item">
+            <span class="step-num">1</span>
+            <span>在网页任意包含二维码的图片上<strong>点击右键</strong></span>
+          </li>
+          <li class="step-item">
+            <span class="step-num">2</span>
+            <span>在右键菜单中选择<strong>「识别二维码」</strong></span>
+          </li>
+          <li class="step-item">
+            <span class="step-num">3</span>
+            <span>页面将自动弹出识别结果，支持<strong>一键复制</strong>与<strong>链接直达</strong></span>
+          </li>
+        </ol>
+      </div>
+
+      <div class="test-area">
+        <div class="test-title">本地图片测试</div>
+        <div class="drop-zone" id="dropZone">
+          <input type="file" id="fileInput" accept="image/*" hidden>
+          <div class="drop-prompt" id="dropPrompt">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+            <span>点击或拖拽本地二维码图片到此处测试</span>
+          </div>
+          <div class="result-box" id="resultBox" style="display: none;">
+            <div class="result-text" id="resultText"></div>
+            <div class="result-actions">
+              <button class="btn btn-primary" id="copyResultBtn">复制结果</button>
+              <a class="btn btn-secondary" id="openLinkBtn" style="display: none;" target="_blank">打开链接</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <span>Manifest V3 • 原生硬件加速 + 离线识别</span>
+    </footer>
+  </div>
+  <script src="libs/jsQR.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>
